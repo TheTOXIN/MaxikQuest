@@ -1,0 +1,94 @@
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  height : 100vh;
+  width : 100vw;
+  font-size: 42px;
+  line-height: 40px;
+  text-align: center;
+  font-family: Roboto, serif;
+  button {
+    margin-top: 15px;
+    font-size: 35px;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.main {
+  height : 100vh;
+  width : 100vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.score {
+  font-family: "Comic Sans MS", serif;
+  color: black;
+  font-size: 32px;
+  height: 10%;
+  .stateScore {
+    opacity: 0;
+    position: absolute;
+  }
+}
+
+.quest {
+  font-family: "Lato Medium", serif;
+  line-height: 40px;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 42px;
+  color: black;
+  height: 20%;
+}
+
+.variants {
+  height: 50%;
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+  }
+  div {
+    padding: 5px;
+  }
+}
+
+.buttons {
+  height: 20%;
+  div {
+    width: 50%;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-size: 24px;
+    width: 100%;
+  }
+}
+
+.end {
+  img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+
