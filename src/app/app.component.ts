@@ -41,7 +41,7 @@ export class AppComponent {
   public scoreState = 'default';
   public scoreColor = 'black';
 
-  public pointStart = 5;
+  public pointStart = 1;
   public startCounter = this.pointStart;
 
   private winSound = new Audio();
