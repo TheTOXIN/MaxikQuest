@@ -34,12 +34,13 @@
 
 <div class="end" *ngIf="state === 'END'">
   <div class="gift animate__animated animate__tada" *ngIf="!showResult" (click)="clickGift()">
-    <p>ОТКРОЙ СВОЙ ПРИЗ !!!</p>
+    <p>ОТКРОЙ ПОДАРОК !!!</p>
     <div [@bouncedState]='counterGift'>
       <img src="assets/gift.png" alt="">
     </div>
   </div>
-  <div class="result animate__animated animate__flash" *ngIf="showResult">
-      <img [src]="resultImage">
+  <div class="result" *ngIf="showResult">
+    <p class="animate__animated animate__heartBeat">{{resultText}}</p>
+    <img class="animate__animated animate__flash" [src]="resultImage">
   </div>
 </div>

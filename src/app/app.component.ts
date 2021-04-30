@@ -48,7 +48,7 @@ export class AppComponent {
   public questCount = quests.length;
 
   public score = 0;
-  public winScore = 100;
+  public winScore = 0;
 
   public scoreBonus = '';
   public scoreState = 'default';
@@ -57,6 +57,7 @@ export class AppComponent {
   public pointStart = 1;
   public startCounter = this.pointStart;
 
+  public resultText = '';
   public resultImage = '';
   public resultSound = null;
   public showResult = false;
@@ -70,6 +71,7 @@ export class AppComponent {
 
   constructor() {
     this.loadAudio();
+    this.initScore();
   }
 
   public loadAudio(): void {
@@ -84,6 +86,17 @@ export class AppComponent {
 
     this.looseSoundResult.src = '../../../assets/loose.mp3';
     this.looseSoundResult.load();
+  }
+
+  public initScore(): void {
+    let sum = 0;
+
+    quests.forEach((q) => {
+      const score = Math.max(q.scoreOne, q.scoreTwo);
+      sum += score;
+    });
+
+    this.winScore = sum;
   }
 
   public plusStartCounter(): void {
@@ -112,6 +125,13 @@ export class AppComponent {
   public makeVote(variant: number): void {
     const bonus = variant === 1 ? this.quest.scoreOne : this.quest.scoreTwo;
     this.score += bonus;
+
+    if (bonus === 228) {
+      alert('ЗРЯ ТЫ ТАК ДРУЖОК...');
+      window.location.reload();
+      window.location.href = 'https://www.youtube.com/watch?v=rzcFsykYPgA';
+      return;
+    }
 
     if (bonus >= 0) {
       this.winSound.play();
@@ -147,11 +167,13 @@ export class AppComponent {
   }
 
   public resultWin(): void {
+    this.resultText = 'ТВОЙ ПРИЗ ТУТ';
     this.resultImage = 'assets/win.jpg';
     this.resultSound = this.winSoundResult;
   }
 
   public resultLoose(): void {
+    this.resultText = 'ТЫ ПРОИГРАЛ';
     this.resultImage = 'assets/loose.jpg';
     this.resultSound = this.looseSoundResult;
   }
