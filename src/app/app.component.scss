@@ -59,16 +59,18 @@
 .variants {
   height: 40%;
   img {
-    max-height: 100%;
+    width: 100%;
     max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: #fafafa;
     box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
   }
   div {
     margin-top: 15px;
-    align-items: start;
     height: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -115,6 +117,7 @@
       padding: 30px;
     }
     img {
+      cursor: pointer;
       max-width: 100%;
       max-height: 100%;
     }
