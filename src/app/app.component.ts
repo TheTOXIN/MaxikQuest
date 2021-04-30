@@ -126,6 +126,9 @@ export class AppComponent {
   }
 
   public makeVote(variant: number): void {
+    this.imageLoadOne = true;
+    this.imageLoadTwo = true;
+
     const bonus = variant === 1 ? this.quest.scoreOne : this.quest.scoreTwo;
     this.score += bonus;
 
