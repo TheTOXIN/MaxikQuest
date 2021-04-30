@@ -63,6 +63,9 @@ export class AppComponent {
   public showResult = false;
   public counterGift = 0;
 
+  public imageOne = null;
+  public imageTwo = null;
+
   private winSound = new Audio();
   private looseSound = new Audio();
 
@@ -120,18 +123,17 @@ export class AppComponent {
 
     this.quest = quests[this.questIndex];
     this.questIndex++;
+
+    this.imageOne = 'assets/quests/q' + this.questIndex + 'v1.jpg';
+    this.imageTwo = 'assets/quests/q' + this.questIndex + 'v2.jpg';
   }
 
   public makeVote(variant: number): void {
+    this.imageOne = null;
+    this.imageTwo = null;
+
     const bonus = variant === 1 ? this.quest.scoreOne : this.quest.scoreTwo;
     this.score += bonus;
-
-    if (bonus === 228) {
-      alert('ЗРЯ ТЫ ТАК ДРУЖОК...');
-      window.location.reload();
-      window.location.href = 'https://www.youtube.com/watch?v=rzcFsykYPgA';
-      return;
-    }
 
     if (bonus >= 0) {
       this.winSound.play();
@@ -139,6 +141,11 @@ export class AppComponent {
     } else {
       this.looseSound.play();
       this.setState(false, Math.abs(bonus));
+    }
+
+    if (bonus === -228) {
+      this.ban();
+      return;
     }
 
     this.nextQuest();
@@ -185,5 +192,10 @@ export class AppComponent {
       this.showResult = true;
       this.resultSound.play();
     }
+  }
+
+  public ban(): void {
+    alert('ЗРЯ ТЫ ТАК ДРУЖОК...');
+    window.location.href = 'https://www.youtube.com/watch?v=rzcFsykYPgA';
   }
 }

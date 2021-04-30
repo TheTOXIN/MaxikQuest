@@ -16,10 +16,10 @@
   </div>
   <div class="variants">
     <div [@moveRightState]="questIndex" id="v1">
-      <img [src]="'assets/quests/q' + questIndex + 'v1.jpg'" alt="v1">
+      <img [src]="imageOne" *ngIf="imageOne" alt="v1">
     </div>
     <div [@moveLeftState]="questIndex" id="v2">
-      <img [src]="'assets/quests/q' + questIndex + 'v2.jpg'" alt="v2">
+      <img [src]="imageTwo" *ngIf="imageTwo" alt="v2">
     </div>
   </div>
   <div class="buttons">
