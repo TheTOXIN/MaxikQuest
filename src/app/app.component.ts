@@ -24,6 +24,18 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
         animate(500, style({opacity: 1})),
         animate(100, style({transform: 'translateY(100px)', opacity: 0}))
       ])
+    ]),
+    trigger('moveRightState', [
+      transition('* => *', [
+        style({transform: 'translateX(-100%)'}),
+        animate('300ms ease-in', style({transform: 'translateX(0%)'}))
+      ])
+    ]),
+    trigger('moveLeftState', [
+      transition('* => *', [
+        style({transform: 'translateX(100%)'}),
+        animate('300ms ease-in', style({transform: 'translateX(0%)'}))
+      ])
     ])
   ]
 })
