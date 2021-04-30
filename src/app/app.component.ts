@@ -54,7 +54,7 @@ export class AppComponent {
   public scoreState = 'default';
   public scoreColor = 'black';
 
-  public pointStart = 1;
+  public pointStart = 300;
   public startCounter = this.pointStart;
 
   public resultText = '';
