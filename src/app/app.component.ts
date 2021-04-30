@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Question, quests} from './Question';
-import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {animate, keyframes, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -63,8 +63,8 @@ export class AppComponent {
   public showResult = false;
   public counterGift = 0;
 
-  public imageOne = null;
-  public imageTwo = null;
+  public imageLoadOne = true;
+  public imageLoadTwo = true;
 
   private winSound = new Audio();
   private looseSound = new Audio();
@@ -123,15 +123,9 @@ export class AppComponent {
 
     this.quest = quests[this.questIndex];
     this.questIndex++;
-
-    this.imageOne = 'assets/quests/q' + this.questIndex + 'v1.jpg';
-    this.imageTwo = 'assets/quests/q' + this.questIndex + 'v2.jpg';
   }
 
   public makeVote(variant: number): void {
-    this.imageOne = null;
-    this.imageTwo = null;
-
     const bonus = variant === 1 ? this.quest.scoreOne : this.quest.scoreTwo;
     this.score += bonus;
 
@@ -145,7 +139,6 @@ export class AppComponent {
 
     if (bonus === -228) {
       this.ban();
-      return;
     }
 
     this.nextQuest();
@@ -192,6 +185,14 @@ export class AppComponent {
       this.showResult = true;
       this.resultSound.play();
     }
+  }
+
+  public onLoadOne(): void {
+    this.imageLoadOne = false;
+  }
+
+  public onLoadTwo(): void {
+    this.imageLoadTwo = false;
   }
 
   public ban(): void {
