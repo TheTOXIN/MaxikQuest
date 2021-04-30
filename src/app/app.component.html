@@ -1,6 +1,6 @@
 <div class="start" *ngIf="state === 'START'">
   <div>
-    🌈 Добро пожаловать в супер квест Максик, набери {{winScore}} 💩 какашек, отвечая на вопросы,
+    🌈 Добро пожаловать в супер квест Максик, набери {{winScore}} 💩 какашек, ответив на {{questCount}} вопросов,
     и может быть ты получишь свой приз 🥇, чтобы начать нажми на баклажан {{startCounter}} раз
   </div>
   <button (click)="plusStartCounter()" mat-fab color="accent" aria-label="Каво?">🍆</button>
@@ -16,10 +16,10 @@
   </div>
   <div class="variants">
     <div id="v1">
-      <img [src]="'assets/q' + questIndex + 'v1.jpg'" alt="v1">
+      <img [src]="'assets/quests/q' + questIndex + 'v1.jpg'" alt="v1">
     </div>
     <div id="v2">
-      <img [src]="'assets/q' + questIndex + 'v2.jpg'" alt="v2">
+      <img [src]="'assets/quests/q' + questIndex + 'v2.jpg'" alt="v2">
     </div>
   </div>
   <div class="buttons">

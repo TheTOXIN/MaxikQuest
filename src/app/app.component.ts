@@ -33,6 +33,7 @@ export class AppComponent {
 
   public quest: Question;
   public questIndex = 0;
+  public questCount = quests.length;
 
   public score = 0;
   public winScore = 100;
@@ -97,32 +98,18 @@ export class AppComponent {
   }
 
   public makeVote(variant: number): void {
-    if (this.quest.rightVariant === 0) {
-      this.result();
-      return;
-    }
+    const bonus = variant === 1 ? this.quest.scoreOne : this.quest.scoreTwo;
+    this.score += bonus;
 
-    if (variant === this.quest.rightVariant) {
-      this.winner();
+    if (bonus >= 0) {
+      this.winSound.play();
+      this.setState(true, Math.abs(bonus));
     } else {
-      this.looser();
+      this.looseSound.play();
+      this.setState(false, Math.abs(bonus));
     }
 
     this.nextQuest();
-  }
-
-  public winner(): void {
-    this.winSound.play();
-    this.score += this.quest.scoreWin;
-
-    this.setState(true, this.quest.scoreWin);
-  }
-
-  public looser(): void {
-    this.looseSound.play();
-    this.score -= this.quest.scoreLoss;
-
-    this.setState(false, this.quest.scoreLoss);
   }
 
   public setState(win: boolean, score: number): void {
