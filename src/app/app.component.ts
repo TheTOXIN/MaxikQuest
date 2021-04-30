@@ -44,6 +44,11 @@ export class AppComponent {
   public pointStart = 1;
   public startCounter = this.pointStart;
 
+  public resultImage = '';
+  public resultSound = null;
+  public showResult = false;
+  public counterGift = 0;
+
   private winSound = new Audio();
   private looseSound = new Audio();
 
@@ -83,7 +88,7 @@ export class AppComponent {
 
   public nextQuest(): void {
     if (this.questIndex >= quests.length) {
-      this.showResult();
+      this.result();
       return;
     }
 
@@ -93,7 +98,7 @@ export class AppComponent {
 
   public makeVote(variant: number): void {
     if (this.quest.rightVariant === 0) {
-      this.showResult();
+      this.result();
       return;
     }
 
@@ -132,21 +137,32 @@ export class AppComponent {
     }
   }
 
-  public showResult(): void {
+  public result(): void {
     if (this.score >= this.winScore) {
       this.resultWin();
     } else {
       this.resultLoose();
     }
+
+    this.state = 'END';
   }
 
   public resultWin(): void {
-    this.state = 'WIN';
-    this.winSoundResult.play();
+    this.resultImage = 'assets/win.jpg';
+    this.resultSound = this.winSoundResult;
   }
 
   public resultLoose(): void {
-    this.state = 'LOOSE';
-    this.looseSoundResult.play();
+    this.resultImage = 'assets/loose.jpg';
+    this.resultSound = this.looseSoundResult;
+  }
+
+  public clickGift(): void {
+    this.counterGift++;
+
+    if (this.counterGift >= 10) {
+      this.showResult = true;
+      this.resultSound.play();
+    }
   }
 }

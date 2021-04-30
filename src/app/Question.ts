@@ -13,8 +13,8 @@ export class Question {
 export const quests = [
   new Question(
     'ТЫ КТО 1 ?',
-    'АЛЕГК',
-    'МАКСИК',
+    'АЛЕГКasdasdasd',
+    'МАКСИКasdasdasd',
     100,
     100,
     2

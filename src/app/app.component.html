@@ -1,6 +1,6 @@
 <div class="start" *ngIf="state === 'START'">
   <div>
-    🌈 Добро пожаловать на супер квест Максик, набери {{winScore}} 💩,
+    🌈 Добро пожаловать в супер квест Максик, набери {{winScore}} 💩 какашек, отвечая на вопросы,
     и может быть ты получишь свой приз 🥇, чтобы начать нажми на баклажан {{startCounter}} раз
   </div>
   <button (click)="plusStartCounter()" mat-fab color="accent" aria-label="Каво?">🍆</button>
@@ -32,10 +32,12 @@
   </div>
 </div>
 
-<div class="end" *ngIf="state === 'WIN'">
-  <img src="assets/win.jpg">
-</div>
-
-<div class="end" *ngIf="state === 'LOOSE'">
-  <img src="assets/loose.jpg">
+<div class="end" *ngIf="state === 'END'">
+  <div class="gift" *ngIf="!showResult" (click)="clickGift()">
+    <p>ОТКРОЙ СВОЙ ПРИЗ !!!</p>
+    <div [@bouncedState]='counterGift'><img src="assets/gift.png" alt=""></div>
+  </div>
+  <div class="result" *ngIf="showResult">
+      <img [src]="resultImage">
+  </div>
 </div>
